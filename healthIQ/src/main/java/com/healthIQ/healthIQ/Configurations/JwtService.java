@@ -1,5 +1,6 @@
 package com.healthIQ.healthIQ.Configurations;
 
+import com.healthIQ.healthIQ.Models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,7 +31,15 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails){
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> claims = new HashMap<>();
+        if (userDetails instanceof User) {
+            User user = (User) userDetails;
+            claims.put("firstName", user.getFirstName());
+            claims.put("lastName", user.getLastName());
+            claims.put("ID",user.getID());
+            claims.put("role",user.getRole());
+        }
+        return generateToken(claims, userDetails);
     }
 
     public String generateToken(
