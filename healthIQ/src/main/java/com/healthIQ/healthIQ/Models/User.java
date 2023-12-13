@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Document("Users")
+@Getter
+@Setter
 public class User implements UserDetails {
     @Id
     private String ID;
@@ -22,6 +24,18 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+
+    private String ville;
+    private String adresse;
+    private Double poid;
+    private String dateNaissance;
+    private String CodeMedical;
+    private Integer phoneNumber;
+    private String sex;
+    private boolean sportActif;
+    private Double taille;
+    private String typeSport;
+    private Integer nb_foisSport;
     private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

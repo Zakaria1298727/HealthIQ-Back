@@ -21,9 +21,20 @@ public class AuthentificationService {
 
     public AuthentificationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
+                .firstName(request.getNom())
+                .lastName(request.getPrenom())
                 .email(request.getEmail())
+                .ville(request.getVille())
+                .adresse(request.getAdresse())
+                .poid(request.getPoid())
+                .sex(request.getSex())
+                .phoneNumber(request.getPhoneNumber())
+                .taille(request.getTaille())
+                .CodeMedical(request.getCodeMedical())
+                .dateNaissance(request.getDateNaissance())
+                .sportActif(request.isSportActif())
+                .nb_foisSport(request.getNb_foisSport())
+                .typeSport(request.getTypeSport())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ROLE_USER)
                 .build();
@@ -50,6 +61,7 @@ public class AuthentificationService {
 
         return AuthentificationResponse.builder()
                 .token(jwtToken)
+
                 .build();
     }
 }
