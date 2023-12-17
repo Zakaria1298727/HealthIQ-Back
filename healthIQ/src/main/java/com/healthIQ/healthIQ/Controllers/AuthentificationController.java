@@ -24,6 +24,20 @@ public class AuthentificationController {
             return ResponseEntity.ok(service.register(request));
         }
     }
+
+    @PostMapping("/emailexists")
+    public ResponseEntity<?> checkEmailExists(@RequestBody RegisterRequest request) {
+        boolean emailExists = service.emailExists(request.getEmail());
+
+        if (!emailExists) {
+            // Si l'email existe déjà, renvoyer une réponse vide (ne rien faire)
+            return ResponseEntity.ok().build();
+        } else {
+            // Si l'email n'existe pas, renvoyer une réponse avec le code d'erreur 401
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email existant");
+        }
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthentificationResponse> register(
             @RequestBody AuthentificationRequest request
