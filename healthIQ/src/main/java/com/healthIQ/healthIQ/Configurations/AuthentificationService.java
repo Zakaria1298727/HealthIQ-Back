@@ -64,4 +64,9 @@ public class AuthentificationService {
 
                 .build();
     }
+
+    public boolean emailExists(String email){
+        return userRepo.findByEmail(email).isPresent();
+    }
+
 }
