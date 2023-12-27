@@ -50,6 +50,8 @@ public class AuthentificationService {
                 .typeSport(request.getTypeSport())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ROLE_USER)
+                .enabled(false)
+                .locked(false)
                 .build();
 
         var jwtToken = jwtService.generateToken(user);
