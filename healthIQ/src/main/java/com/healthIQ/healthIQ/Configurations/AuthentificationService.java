@@ -69,7 +69,7 @@ public class AuthentificationService {
         tokenService.saveConfirmationToken(confirmationToken);
 
 // Construire le lien en utilisant localhost:8080
-        String localhostLink = "http://localhost:8080/registrationConfirm?confirmToken=" + confToken;
+        String localhostLink = "http://localhost:8080/api/v1/auth/registrationConfirm?confirmToken=" + confToken;
         String purpose = "Thank you for registering. Please click on the below link to activate your account:";
 
 // Envoyer l'email en utilisant le lien localhost
@@ -207,9 +207,9 @@ public class AuthentificationService {
                 .orElseThrow(() ->
                         new IllegalStateException("token not found"));
 
-        if (confirmationToken.getConfirmedAt() != null) {
-            throw new IllegalStateException("Invalid Token pass!");
-        }
+//        if (confirmationToken.getConfirmedAt() != null) {
+//            throw new IllegalStateException("Invalid Token pass!");
+//        }
 
         LocalDateTime expiredAt = confirmationToken.getExpiredAt();
 
