@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService  {
     private UserRepo userRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    private static final String ADMIN_USERNAME = "admindefault@smartmaint.com";
+    private static final String ADMIN_USERNAME = "healthiq23@gmail.com";
     private static final String ADMIN_PASSWORD = "12345678";
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

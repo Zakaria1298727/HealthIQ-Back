@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -46,15 +48,11 @@ public class AuthentificationController {
     }
 
     @GetMapping("/registrationConfirm")
-    public ResponseEntity<String> confirm(@RequestParam("confirmToken") String token) {
+    public RedirectView confirm(@RequestParam("confirmToken") String token) {
         service.confirmToken(token);
         log.info("email validated");
-        return ResponseEntity.ok("Email validation successful");
-    }
-    @GetMapping("/forgotPasswordRecovery")
-    public ResponseEntity<String> confirmPass(@RequestParam("confirmToken") String token, HttpSession session) {
-        service.confirmPassToken(token, session);
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/ChangePassword").build();
+        // Rediriger vers la page d'accueil Angular après validation de l'email
+        return new RedirectView("http://localhost:4200/Home"); // Assurez-vous de mettre le bon chemin d'accès à votre page d'accueil Angular
     }
     @GetMapping("/logout")
     public ResponseEntity<String> logout() {
@@ -64,5 +62,27 @@ public class AuthentificationController {
         // Return a response indicating successful logout
         return ResponseEntity.ok("Logout successful");
     }
+    @GetMapping("/forgotPasswordRecovery")
+    public ResponseEntity<String> confirmPass(@RequestParam("confirmToken") String token, HttpSession session) {
+        service.confirmPassToken(token, session);
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/ChangePassword").build();
+    }
+    @PostMapping("/newPassword")
+    public ResponseEntity<String> newPassword(@RequestParam("email") String email, HttpSession session) {
+        session.setAttribute("emailPassRecover", email.toLowerCase());
+        service.recoverPassword(email.toLowerCase());
+        return ResponseEntity.ok("Password recovery initiated");
+    }
 
+    @PostMapping("/changePass")
+    public ResponseEntity<String> changePassword(@ModelAttribute("newPassword") String newPassword, HttpSession session) {
+        String email = (String) session.getAttribute("emailPassRecover");
+        if (email == null) {
+            return ResponseEntity.badRequest().body("Email not found in the session");
+        }
+
+        service.changePassword(email.toLowerCase(), newPassword);
+        session.removeAttribute("emailPassRecover");
+        return ResponseEntity.ok("Password changed successfully");
+    }
 }

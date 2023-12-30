@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @EnableMongoRepositories
 @SpringBootApplication
+@EnableMongoRepositories
 public class HealthIqApplication {
 
 	public static void main(String[] args) {
