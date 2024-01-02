@@ -30,13 +30,16 @@
 
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-            http
-                    .csrf(AbstractHttpConfigurer::disable)
+            http.csrf(AbstractHttpConfigurer::disable)
                     .cors(Customizer.withDefaults())
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/api/v1/auth/**","/registrationConfirm","forgotPasswordRecovery").permitAll()
-                            .anyRequest()
-                            .authenticated())
+                            .requestMatchers("/api/v1/auth/**",
+                                            "/registrationConfirm",
+                                          "forgotPasswordRecovery"
+                                      , "/doctor/list" , "/doctor/add","/doctor/update/{id}","/doctor/delete/{id}").permitAll()
+                            .requestMatchers("").hasAnyRole("DOCTOR")
+                            .requestMatchers("").hasAnyRole("ADMIN")
+                            .anyRequest().authenticated())
                     .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authenticationProvider(authenticationProvider)
                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
