@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService implements UserDetailsService  {
     @Autowired
@@ -58,6 +60,15 @@ public class UserService implements UserDetailsService  {
 
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepo.save(user);
+    }
+
+    public List<User> findAll(){
+      return  userRepo.findAll();
+    }
+
+    public int save(User user){
+        userRepo.save(user);
+        return 1;
     }
 
 
