@@ -34,7 +34,8 @@
                     .csrf(AbstractHttpConfigurer::disable)
                     .cors(Customizer.withDefaults())
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/api/v1/auth/**","/registrationConfirm","forgotPasswordRecovery").permitAll()
+//                            .requestMatchers("/api/v1/auth/**","/registrationConfirm","forgotPasswordRecovery").permitAll()
+                            .requestMatchers("/api/v1/**").permitAll()
                             .anyRequest()
                             .authenticated())
                     .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
