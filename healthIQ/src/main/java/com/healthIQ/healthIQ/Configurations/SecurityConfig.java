@@ -36,7 +36,9 @@
                             .requestMatchers("/api/v1/auth/**",
                                             "/registrationConfirm",
                                           "forgotPasswordRecovery"
-                                      , "/doctor/list" , "/doctor/add","/doctor/update/{id}","/doctor/delete/{id}").permitAll()
+                                      , "/doctor/list" , "/doctor/add","/doctor/update/{id}","/doctor/delete/{id}"
+                            ,"/events/**","/doctor/**"
+                                    ).permitAll()
                             .requestMatchers("").hasAnyRole("DOCTOR")
                             .requestMatchers("").hasAnyRole("ADMIN")
                             .anyRequest().authenticated())
