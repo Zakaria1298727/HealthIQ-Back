@@ -21,9 +21,9 @@ public class EventService {
     public ResponseEntity<?> deleteEvent(String id){
      try{
           this.EventRepo.deleteById(id);
-          return new ResponseEntity<>("Deleted Successfuly with id "+id, HttpStatus.OK);
+         return ResponseEntity.ok("Event added");
     }catch (Exception e){
-        return new ResponseEntity<>("Failed to delet ", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Failed to add ", HttpStatus.NOT_FOUND);
     }
     }
 

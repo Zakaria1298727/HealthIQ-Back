@@ -3,6 +3,7 @@ package com.healthIQ.healthIQ.Controllers;
 import com.healthIQ.healthIQ.Models.Ordonnance;
 import com.healthIQ.healthIQ.Services.OrdonnanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,10 @@ public class OrdonnanceController {
     public ResponseEntity<?> addOrdonnance(@RequestBody Ordonnance Or){
        try{
             this.OrdonnanceService.addOrdonnance(Or);
-            return new ResponseEntity<>("Ordonnance ajouter "+Or, HttpStatus.OK);
+           String successMessage = "Ordonnance bien envoyé à notre patient";
+           return ResponseEntity.ok("{\"message\": \"" + successMessage + "\"}");
+
+
 
     }catch (Exception e){
            return new ResponseEntity<>("Failed ro add Ordonnance",HttpStatus.INTERNAL_SERVER_ERROR);

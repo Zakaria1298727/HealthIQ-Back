@@ -22,6 +22,8 @@ public class Event {
     public String description;
     public String date;
     public String hour;
+    public String color;
+    public String status;
 
 
 }
