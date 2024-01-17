@@ -16,9 +16,9 @@ public class Event {
     @Id
 
     public String id;
-    public Long ID_doc;
+    public String ID_doc;
     public String title;
-    public Long Id_patient;
+    public User Id_patient;
     public String description;
     public String date;
     public String hour;
