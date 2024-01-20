@@ -37,7 +37,7 @@
                                             "/registrationConfirm",
                                           "forgotPasswordRecovery"
                                       , "/doctor/list" , "/doctor/add","/doctor/update/{id}","/doctor/delete/{id}"
-                            ,"/events/**","/doctor/**"
+                            ,"/events/**","/doctor/**","/ToDoList/**"
                                     ).permitAll()
                             .requestMatchers("").hasAnyRole("DOCTOR")
                             .requestMatchers("").hasAnyRole("ADMIN")
