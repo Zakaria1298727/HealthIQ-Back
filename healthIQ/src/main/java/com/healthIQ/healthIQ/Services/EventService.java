@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -31,6 +32,9 @@ public class EventService {
 
     public List<Event> getAllEvents(){
         return (List<Event>) this.EventRepo.findAll();
+    }
+    public Optional<Event> getOne(String id){
+        return this.EventRepo.findById(id);
     }
 
 }

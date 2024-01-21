@@ -28,6 +28,17 @@ public class Doctor {
     @Column(unique = true)
     private String email;
 
+    private String image;
+    private String specilite;
+    private Long PrixConsultation;
+    private String  naissance;
+    private String adresse;
+    private String finTime;
+    private String debutTime;
+
+
+
     @Column(unique = true)
     private String password;
+
 }
