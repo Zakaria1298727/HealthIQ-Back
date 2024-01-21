@@ -7,9 +7,6 @@ import lombok.Setter;
 import jakarta.persistence.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalTime;
-
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,13 +18,7 @@ public class Doctor {
 
     private String first_name;
     private String last_name;
-    private LocalTime debutTime;
-    private LocalTime finTime;
-    private Role role;
 
     @Column(unique = true)
     private String email;
-
-    @Column(unique = true)
-    private String password;
 }
