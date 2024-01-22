@@ -29,8 +29,11 @@ public class Doctor {
     @Column(unique = true)
     private String email;
 
+
+
     @Column(unique = true)
     private String password;
+
 
     private String adresse;
     private int age;
@@ -38,4 +41,5 @@ public class Doctor {
     private String operation;
     private String specialite;
     private String dateNaissance;
+
 }
