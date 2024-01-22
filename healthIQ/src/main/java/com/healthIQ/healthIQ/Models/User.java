@@ -38,6 +38,9 @@ public class User implements UserDetails {
     private String typeSport;
     private Integer nb_foisSport;
     private Role role;
+    private String group_sang;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

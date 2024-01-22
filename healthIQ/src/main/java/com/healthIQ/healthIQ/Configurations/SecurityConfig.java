@@ -33,7 +33,7 @@
             http.csrf(AbstractHttpConfigurer::disable)
                     .cors(Customizer.withDefaults())
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/api/v1/auth/**",
+                            .requestMatchers("/api/v1/auth/**","/api/v1/user/**",
                                             "/registrationConfirm",
                                           "forgotPasswordRecovery"
                                       , "/doctor/list" , "/doctor/add","/doctor/update/{id}","/doctor/delete/{id}"

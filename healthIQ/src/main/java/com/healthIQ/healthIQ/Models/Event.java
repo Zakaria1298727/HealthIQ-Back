@@ -17,8 +17,9 @@ public class Event {
 
     public String id;
     public String ID_doc;
+
     public String title;
-    public User Id_patient;
+    public User id_patient;
     public String description;
     public String date;
     public String hour;

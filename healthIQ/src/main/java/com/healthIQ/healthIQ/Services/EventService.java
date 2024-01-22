@@ -20,6 +20,7 @@ public class EventService {
         return (Event) this.EventRepo.save(ev);
     }
     public ResponseEntity<?> deleteEvent(String id){
+
      try{
           this.EventRepo.deleteById(id);
          return ResponseEntity.ok("Event added");
