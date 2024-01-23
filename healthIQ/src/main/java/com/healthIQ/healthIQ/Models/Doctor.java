@@ -30,7 +30,7 @@ public class Doctor {
 
     private String image;
     private String specilite;
-    private Long PrixConsultation;
+   // private Long PrixConsultation;
     private String  naissance;
     private String adresse;
     private String finTime;
@@ -43,5 +43,6 @@ public class Doctor {
 
     @Column(unique = true)
     private String password;
-
+  private boolean enabled =true;
+ private boolean locked =false;
 }
