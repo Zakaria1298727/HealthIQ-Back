@@ -1,4 +1,5 @@
 package com.healthIQ.healthIQ.Services;
+import com.healthIQ.healthIQ.Models.Doctor;
 import com.healthIQ.healthIQ.Models.Role;
 import com.healthIQ.healthIQ.Models.User;
 import com.healthIQ.healthIQ.Repositories.UserRepo;
@@ -70,6 +71,10 @@ public class UserService implements UserDetailsService  {
         userRepo.save(user);
         return 1;
     }
+    public User getOne(String id ){
+        return userRepo.findById(id).orElse(null);
+    }
+
 
 
 }

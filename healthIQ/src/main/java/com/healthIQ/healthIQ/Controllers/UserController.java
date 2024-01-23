@@ -1,5 +1,6 @@
 package com.healthIQ.healthIQ.Controllers;
 
+import com.healthIQ.healthIQ.Models.Doctor;
 import com.healthIQ.healthIQ.Models.User;
 import com.healthIQ.healthIQ.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class UserController {
         userService.save(user);
         return 1;
 
+    }
+    @GetMapping("/userOne/{id}")
+    public User getUserById(@PathVariable String id){
+        return userService.getOne(id);
     }
 
 
