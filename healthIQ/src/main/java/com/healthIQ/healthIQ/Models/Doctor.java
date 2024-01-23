@@ -14,15 +14,15 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "doctors")
+@Document(collection = "Users")
 public class Doctor {
     @Id
     private String id;
 
     private String first_name;
     private String last_name;
-    //private LocalTime debutTime;
-   // private LocalTime finTime;
+   // private LocalTime debutTime;
+    //private LocalTime finTime;
     private Role role;
 
     @Column(unique = true)
@@ -30,15 +30,20 @@ public class Doctor {
 
     private String image;
     private String specilite;
-    private Long PrixConsultation;
+ //   private Long PrixConsultation;
     private String  naissance;
     private String adresse;
-   private String finTime;
+    private String finTime;
     private String debutTime;
-
+    private String operation;
+    private String specialite;
+    private String dateNaissance;
+    private int age;
+    private Double prixConsultation;
 
 
     @Column(unique = true)
     private String password;
-
+    private boolean enabled =true;
+    private boolean locked =false;
 }

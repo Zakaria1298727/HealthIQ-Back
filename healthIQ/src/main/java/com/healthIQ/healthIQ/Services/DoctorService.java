@@ -5,6 +5,8 @@ import com.healthIQ.healthIQ.Models.Role;
 import com.healthIQ.healthIQ.Repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Arrays;
+
 
 import java.util.List;
 
@@ -33,6 +35,13 @@ public class DoctorService {
         updatedDoctor.setEmail(doctor.getEmail());
         updatedDoctor.setDebutTime(doctor.getDebutTime());
         updatedDoctor.setFinTime(doctor.getFinTime());
+        updatedDoctor.setPassword((doctor.getPassword()));
+        updatedDoctor.setAdresse(doctor.getAdresse());
+        updatedDoctor.setAge(doctor.getAge());
+        updatedDoctor.setPrixConsultation(doctor.getPrixConsultation());
+        updatedDoctor.setOperation(doctor.getOperation());
+        updatedDoctor.setSpecialite(doctor.getSpecialite());
+        updatedDoctor.setDateNaissance(doctor.getDateNaissance());
         return doctorRepository.save(updatedDoctor);
     }
 }
