@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -30,5 +31,9 @@ public class EventController {
         return EventService.getAllEvents();
     }
 
+    @GetMapping("/getOne/{id}")
+    public Optional<Event> getOne(@PathVariable("id") String id){
+        return this.EventService.getOne(id);
+    }
 
 }
