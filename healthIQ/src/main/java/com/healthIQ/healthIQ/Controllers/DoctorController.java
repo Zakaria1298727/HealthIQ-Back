@@ -23,6 +23,10 @@ public class DoctorController {
     public Doctor getDoctorById(@PathVariable String id){
         return doctorService.getDoctorById(id);
     }
+    @GetMapping("/bySpecialite/{specialite}")
+    public List<Doctor> getDoctorsBySpecialite(@PathVariable String specialite) {
+        return doctorService.getDoctorsBySpecialite(specialite);
+    }
     @PostMapping("/add")
     public Doctor addDoctor(@RequestBody Doctor doctor){
         return doctorService.addDoctor(doctor);

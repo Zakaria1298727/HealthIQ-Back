@@ -21,6 +21,9 @@ public class DoctorService {
     public Doctor getDoctorById(String id ){
         return doctorRepository.findById(id).orElse(null);
     }
+    public List<Doctor> getDoctorsBySpecialite(String specialite) {
+        return doctorRepository.findBySpecialite(specialite);
+    }
     public Doctor addDoctor(Doctor doctor){
         doctor.setRole(Role.ROLE_DOCTOR);
         return (Doctor) doctorRepository.save(doctor);
