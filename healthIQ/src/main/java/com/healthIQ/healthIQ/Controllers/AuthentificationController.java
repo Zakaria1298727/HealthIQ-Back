@@ -42,9 +42,14 @@ public class AuthentificationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthentificationResponse> register ( @RequestBody AuthentificationRequest request,HttpSession httpSession){
+       try{
         AuthentificationResponse authenticationResponse = service.authenticate(request);
         httpSession.setAttribute("Token", authenticationResponse.getToken());
         return ResponseEntity.ok(service.authenticate(request));
+       }catch (Exception e){
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+       }
     }
 
     @GetMapping("/registrationConfirm")

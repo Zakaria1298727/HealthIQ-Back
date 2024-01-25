@@ -38,8 +38,8 @@ public class User implements UserDetails {
     private String typeSport;
     private Integer nb_foisSport;
     private String group_sang;
-    private Doctor doctor;
 
+    private  String image;
     private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
