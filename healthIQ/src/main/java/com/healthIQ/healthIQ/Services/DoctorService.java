@@ -5,8 +5,6 @@ import com.healthIQ.healthIQ.Models.Role;
 import com.healthIQ.healthIQ.Repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Arrays;
-
 
 import java.util.List;
 

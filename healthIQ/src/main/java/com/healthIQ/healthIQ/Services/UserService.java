@@ -1,4 +1,5 @@
 package com.healthIQ.healthIQ.Services;
+
 import com.healthIQ.healthIQ.Models.Role;
 import com.healthIQ.healthIQ.Models.User;
 import com.healthIQ.healthIQ.Repositories.UserRepo;
@@ -13,18 +14,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService  {
+public class UserService implements UserDetailsService {
+
+    @Autowired
+    private DoctorService doctorService;
     @Autowired
     private UserRepo userRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
     private static final String ADMIN_USERNAME = "healthiq23@gmail.com";
     private static final String ADMIN_PASSWORD = "12345678";
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("username not found"));
     }
+
     @PostConstruct
     public void initAdminUser() {
         if (!emailExists(ADMIN_USERNAME)) {
@@ -37,15 +43,20 @@ public class UserService implements UserDetailsService  {
             adminUser.setRole(Role.ROLE_ADMIN);
 
             userRepo.save(adminUser);
+
         }
     }
-    public boolean emailExists(String email){
+
+
+
+    public boolean emailExists(String email) {
         return userRepo.findByEmail(email).isPresent();
     }
 
     public void deleteUser(String id) {
         userRepo.deleteById(id);
     }
+
     public void enableUser(String email) {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -62,11 +73,11 @@ public class UserService implements UserDetailsService  {
         userRepo.save(user);
     }
 
-    public List<User> findAll(){
-      return  userRepo.findAll();
+    public List<User> findAll() {
+        return userRepo.findAll();
     }
 
-    public int save(User user){
+    public int save(User user) {
         userRepo.save(user);
         return 1;
     }

@@ -37,6 +37,9 @@ public class User implements UserDetails {
     private Double taille;
     private String typeSport;
     private Integer nb_foisSport;
+    private String group_sang;
+    private Doctor doctor;
+
     private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

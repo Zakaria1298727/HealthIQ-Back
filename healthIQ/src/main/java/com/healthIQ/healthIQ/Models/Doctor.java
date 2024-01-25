@@ -1,13 +1,12 @@
 package com.healthIQ.healthIQ.Models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalTime;
 
 
 @Getter
@@ -21,17 +20,18 @@ public class Doctor {
 
     private String first_name;
     private String last_name;
-   // private LocalTime debutTime;
-   // private LocalTime finTime;
+    // private LocalTime debutTime;
+    // private LocalTime finTime;
     private Role role;
+
 
     @Column(unique = true)
     private String email;
 
     private String image;
     private String specilite;
-   // private Long PrixConsultation;
-    private String  naissance;
+    // private Long PrixConsultation;
+    private String naissance;
     private String adresse;
     private String finTime;
     private String debutTime;
@@ -41,8 +41,9 @@ public class Doctor {
     private int age;
     private Double prixConsultation;
 
+
     @Column(unique = true)
     private String password;
-  private boolean enabled =true;
- private boolean locked =false;
+    private boolean enabled = true;
+    private boolean locked = false;
 }
